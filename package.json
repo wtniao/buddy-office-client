@@ -5,16 +5,21 @@
   "bin": {
     "buddy-office": "cli/index.ts"
   },
-  "keywords": ["buddy-office", "virtual-office", "coding-agent", "mcp"],
+  "keywords": [
+    "buddy-office",
+    "virtual-office",
+    "coding-agent",
+    "mcp"
+  ],
   "author": "",
   "license": "MIT",
-  "type": "module",
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.29.0",
     "commander": "^13.1.0",
     "zod": "^4.4.3"
   },
   "devDependencies": {
+    "@types/node": "^26.0.1",
     "tsx": "^4.22.4",
     "typescript": "^5.7.0"
   }
