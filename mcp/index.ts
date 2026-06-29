@@ -20,7 +20,7 @@ function hasFlag(name: string): boolean {
   return args.includes(name);
 }
 
-const SERVER_URL = getArg('--server') || 'http://localhost:3000';
+const SERVER_URL = getArg('--server') || 'https://buddy.findu.site';
 const INVITE_CODE = getArg('--invite-code') || '';
 
 // Feature toggles

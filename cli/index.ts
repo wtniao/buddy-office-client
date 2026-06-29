@@ -9,7 +9,7 @@ const OFFICE_PATH = path.join(os.homedir(), '.buddy', 'office.json');
 
 function loadConfig() {
   try { return JSON.parse(fs.readFileSync(CONFIG_PATH, 'utf-8')); }
-  catch { return { server: 'http://localhost:3000', admin_token: '' }; }
+  catch { return { server: 'https://buddy.findu.site', admin_token: '' }; }
 }
 
 function fullUrl(path: string): string {
@@ -434,7 +434,7 @@ program.command('setup-hooks')
 
 program.command('setup')
   .description('One-click setup: configure MCP server and permissions for Claude Code')
-  .requiredOption('--server <url>', 'Buddy Office server URL')
+  .option('--server <url>', 'Buddy Office server URL', 'https://buddy.findu.site')
   .option('--invite-code <code>', 'Invite code (required for first time)')
   .option('--with-hooks', 'Also configure Claude Code hooks for automatic status updates')
   .action(async (opts) => {
