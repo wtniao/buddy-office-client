@@ -85,14 +85,16 @@ program.command('register')
   .option('--invite-code <code>', 'Invite code (required for first time)')
   .option('--nickname <name>', 'Nickname (first time only)')
   .option('--avatar-id <id>', 'Avatar ID (first time only)')
+  .option('--agent-type <type>', 'Agent type', 'claude-code')
   .action(async (opts) => {
+    const agentType = opts.agentType || 'claude-code';
     const office = loadOffice();
     const headers: Record<string,string> = { 'Content-Type': 'application/json' };
 
     // Already registered → reconnect with token
     if (office?.agent_token) {
       headers['Authorization'] = `Bearer ${office.agent_token}`;
-      const result = await api('POST', '/api/auth/register', { agent_type: 'cli' }, office.agent_token);
+      const result = await api('POST', '/api/auth/register', { agent_type: agentType }, office.agent_token);
       if (!result.error) {
         console.log(`Reconnected! ${result.nickname} at ${result.desk.label} ${result.level_badge} Lv.${result.level}`);
         console.log(`Office: ${fullUrl(`/w/${result.room_id}`)}`);
@@ -109,7 +111,7 @@ program.command('register')
 
     const result = await api('POST', '/api/auth/register', {
       invite_code: opts.inviteCode,
-      agent_type: 'cli',
+      agent_type: agentType,
       nickname: opts.nickname,
       avatar_id: opts.avatarId,
     });
