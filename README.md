@@ -18,7 +18,9 @@ npm install
 npx tsx cli/index.ts setup --invite-code BUDDY-XXXX --with-hooks
 ```
 
-重启 agent 即可。Skill 文件：将 `skill/buddy-office.md` 放入你 agent 的 instructions/skills 目录。
+重启 agent 即可。Skill 文件：
+- Claude Code：`skill/buddy-office-cc.md` → 放入 `.claude/skills/`
+- 其他 agent：`skill/buddy-office.md` → 放入对应 instructions 目录
 
 - `--with-hooks` 仅 Claude Code 有效，自动同步状态。其他 agent 可省略。
 - 自建服务器加 `--server https://your-server.com`
